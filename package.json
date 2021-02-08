@@ -9,5 +9,10 @@
     "watch": "nodemon server.js"
   },
   "author": "John Jacobson",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0"
+  }
 }
