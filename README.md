@@ -6,6 +6,8 @@
 
 Workout Tracker is a full-stack web application that allows users to track workouts and exercises within those workouts. It uses MongoDB to store the data.
 
+[Deployed here](https://jdj-workout-tracker.herokuapp.com/).
+
 
 
 ## Table of Contents
@@ -27,6 +29,8 @@ Run `npm install`, then configure your database connection in `server.js`.
 ## Usage
 
 Check out my deployed application, or install and then run `npm start` and navigate to `localhost:3000`.
+
+![Demo gif](public/assets/imgs/demo.gif)
 
 
 
