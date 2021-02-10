@@ -9,26 +9,15 @@ const ExerciseSchema = new mongoose.Schema({
     type: {
         type: String,
         trim: true,
-        enum: ["cardio", "strength"],
+        enum: ["cardio", "resistance"],
         required: "The exercise type is required"
     },
-    weight: {
-        type: Number,
-        min: 0,
-        default: 0
-    },
-    sets: {
-        type: Number,
-        min: 1,
-        default: 1
-    },
-    reps: {
-        type: Number,
-        min: 1,
-        default: 1
-    },
+    weight: Number,
+    sets: Number,
+    reps: Number,
     duration: {
-        type: Date
+        type: Date,
+        required: true
     },
     distance: {
         type: Number,
