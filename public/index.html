@@ -36,44 +36,47 @@
             </div>
             <div class="row" id="exercise-form-div">
                 <div class="col s12">
-                    <form class="exercise-form row">
-                        <div class="input-field col s12 l6">
-                            <select name="type">
-                                <option disabled selected>Choose an exercise type</option>
-                                <option value="cardio">Cardio</option>
-                                <option value="resistance">Resistance</option>
-                            </select>
-                            <label for="type">Exercise Type</label>
-                        </div>
-                        <div class="input-field col s12 l6">
-                            <input type="number" name="duration">
-                            <label for="duration">Duration (minutes)</label>
-                        </div>
-                        <div class="input-field col s12 l6">
-                            <input type="text" name="name">
-                            <label for="name">Exercise Name</label>
-                        </div>
-                        <div class="cardio-form">
+                    <div id="forms">
+                        <form class="exercise-form row">
+                            <div class="divider col s12"></div>
                             <div class="input-field col s12 l6">
-                                <input type="number" name="distance">
-                                <label for="distance">Distance (miles)</label>
-                            </div>
-                        </div>
-                        <div class="resistance-form">
-                            <div class="input-field col s12 l6">
-                                <input type="number" name="weight">
-                                <label for="weight">Weight (lbs.)</label>
+                                <select name="type">
+                                    <option disabled selected>Choose an exercise type</option>
+                                    <option value="cardio">Cardio</option>
+                                    <option value="resistance">Resistance</option>
+                                </select>
+                                <label for="type">Exercise Type</label>
                             </div>
                             <div class="input-field col s12 l6">
-                                <input type="number" name="sets">
-                                <label for="sets">Sets</label>
+                                <input type="number" name="duration">
+                                <label for="duration">Duration (minutes)</label>
                             </div>
                             <div class="input-field col s12 l6">
-                                <input type="number" name="reps">
-                                <label for="reps">Reps</label>
+                                <input type="text" name="name">
+                                <label for="name">Exercise Name</label>
                             </div>
-                        </div>
-                    </form>
+                            <div class="cardio-form">
+                                <div class="input-field col s12 l6">
+                                    <input type="number" name="distance">
+                                    <label for="distance">Distance (miles)</label>
+                                </div>
+                            </div>
+                            <div class="resistance-form">
+                                <div class="input-field col s12 l6">
+                                    <input type="number" name="weight">
+                                    <label for="weight">Weight (lbs.)</label>
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input type="number" name="sets">
+                                    <label for="sets">Sets</label>
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input type="number" name="reps">
+                                    <label for="reps">Reps</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="row right">
                         <button id="more-exercise" class="btn waves-effect waves-light">Add another exercise</button>
                         <button id="submit" class="btn waves-effect waves-light">Submit</button>
