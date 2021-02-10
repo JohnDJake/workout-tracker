@@ -2,13 +2,43 @@ const speed = 500;
 
 $(() => {
     const $submit = $("#submit");
+    const modal = M.Modal.init(document.querySelector("#workout-modal"));
 
     $.get("/api").then(workouts => {
         workouts.forEach(workout => {
-            const workoutDiv = $("<div>");
-            workoutDiv.data("id", workout._id);
-            workoutDiv.append($("<p>").text((new Date(workout.date)).toDateString()));
-            workoutDiv.appendTo($("#workouts"));
+            $("<div>")
+                .data("id", workout._id)
+                .append($("<p>").text((new Date(workout.date)).toDateString()))
+                .appendTo($("#workouts"))
+                .append($("<button>").addClass("view-workout btn waves-effect waves-light").text("View"))
+                .append($("<button>").addClass("add-to-workout btn waves-effect waves-light").text("Add exercises"))
+        });
+
+        $(".view-workout").on("click", event => {
+            $.get(`/api/${$(event.target).parent().data("id")}`).then(({ exercises }) => {
+                $("#workout-modal-content")
+                    .empty()
+                    .append(exercises.map(exercise => {
+                        const $exercise = $("<div>")
+                            .addClass("row")
+                            .append($("<div>").addClass("divider col s12"))
+                            .append($("<p>").text(`Name: ${exercise.name}`))
+                            .append($("<p>").text(`Duration: ${exercise.duration} minutes`))
+                            .append($("<p>").text(`Type: ${exercise.type}`));
+                        if (exercise.distance) $exercise.append($("<p>").text(`Distance: ${exercise.distance} miles`));
+                        if (exercise.weight) $exercise.append($("<p>").text(`Weight: ${exercise.weight} lbs.`));
+                        if (exercise.sets) $exercise.append($("<p>").text(`Sets: ${exercise.sets}`));
+                        if (exercise.reps) $exercise.append($("<p>").text(`Reps: ${exercise.reps}`));
+                        return $exercise;
+                    }));
+                modal.open();
+            });
+        });
+        
+        $(".add-to-workout").on("click", event => {
+            $submit.data("id", $(event.target).parent().data("id"));
+            $("#new-workout-div").hide(speed);
+            $("#exercise-form-div").show(speed);
         });
     });
 
