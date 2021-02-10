@@ -15,6 +15,6 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutTrackerDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use("/api/workouts", require("./controllers/workoutsController"));
+app.use("/api/workouts", require("./controllers/apiController"));
 
 app.listen(PORT, () => console.log(`App running on port ${PORT}`));

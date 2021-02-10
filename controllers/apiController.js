@@ -16,4 +16,10 @@ router.get("/:id", (req, res) => db.Workout.findById(req.params.id).populate("ex
 router.post("/", (req, res) => db.Workout.create(req.body)
     .then(data => res.json(data)).catch(err => res.status(500).json(err)));
 
+// Add exercises to a workout
+router.post("/:id", (req, res) => db.Exercise.create(req.body)
+    .then(newExercises => db.Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: newExercises.map(doc => doc._id) } })
+        .then(data => res.json(data)).catch(err => res.status(500).json(err)))
+    .catch(err => res.status(500).json(err)));
+
 module.exports = router;
