@@ -6,7 +6,7 @@ const WorkoutSchema = new mongoose.Schema({
         unique: true,
         default: Date.now
     },
-    exercises: [{ type: mongoose.Schema.Types.ObjectId }]
+    exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: "Exercise" }]
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
