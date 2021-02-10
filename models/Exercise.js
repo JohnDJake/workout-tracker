@@ -12,16 +12,25 @@ const ExerciseSchema = new mongoose.Schema({
         enum: ["cardio", "resistance"],
         required: "The exercise type is required"
     },
-    weight: Number,
-    sets: Number,
-    reps: Number,
     duration: {
-        type: Date,
+        type: Number,
         required: true
+    },
+    weight: {
+        type: Number,
+        required: function () { return this.type === "resistance" }
+    },
+    sets: {
+        type: Number,
+        required: function () { return this.type === "resistance" }
+    },
+    reps: {
+        type: Number,
+        required: function () { return this.type === "resistance" }
     },
     distance: {
         type: Number,
-        required: [function () { return this.type === "cardio" }, "Cardio exercises must specify a distance"]
+        required: function () { return this.type === "cardio" }
     }
 });
 
