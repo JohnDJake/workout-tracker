@@ -1,8 +1,11 @@
 $(() => {
     $("#new-workout").on("click", () => {
-        $("#new-workout-div").hide(100);
-        $("#exercise-form-div").show(100);
-    })
+        $.post("/api").then(data => {
+            $("#submit").data("id", data._id);
+            $("#new-workout-div").hide(100);
+            $("#exercise-form-div").show(100);
+        });
+    });
 
     $("select[name=type]").on("change", event => {
         const $type = $(event.target);
