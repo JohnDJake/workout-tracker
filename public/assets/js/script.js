@@ -3,6 +3,15 @@ const speed = 500;
 $(() => {
     const $submit = $("#submit");
 
+    $.get("/api").then(workouts => {
+        workouts.forEach(workout => {
+            const workoutDiv = $("<div>");
+            workoutDiv.data("id", workout._id);
+            workoutDiv.append($("<p>").text((new Date(workout.date)).toDateString()));
+            workoutDiv.appendTo($("#workouts"));
+        });
+    });
+
     $("#new-workout").on("click", () => {
         $.post("/api").then(data => {
             $submit.data("id", data._id);
