@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const WorkoutSchema = new mongoose.Schema({
     date: {
         type: Date,
-        unique: true
+        unique: true,
+        default: Date.now
     },
     exercises: [{ type: mongoose.Schema.Types.ObjectId }]
 });
